@@ -1,0 +1,3 @@
+(say|repeat|speak) {{sentence}} (#|##|###|####) times
+(say|repeat|speak) (#|##|###|####) times {{sentence}}
+(say|repeat|speak) (#|##|###|####) times {{sentence}} after me

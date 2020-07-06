@@ -32,6 +32,21 @@ class ParrotSkill(MycroftSkill):
         self.update_picture(repeat)
         self.speak(repeat, wait=True)
 
+    @intent_file_handler("speakN.intent")
+    def handle_speakN(self, message):
+        """
+            Repeat the utterance back to the user N times
+        """
+        # TODO this one never triggers
+        repeat = message.data.get("sentence", "").strip()
+        n = extract_number(repeat, ordinals=True, lang=self.lang) or 1
+        for i in range(n):
+            self.update_picture(repeat)
+            self.speak(repeat, wait=True)
+            if self.stop_signaled:
+                self.stop_signaled = False
+                break
+
     @intent_file_handler("start_parrot.intent")
     def handle_start_parrot_intent(self, message):
         self.parroting = True
